@@ -1,6 +1,4 @@
 // app/features/page.tsx
-import Header from "@/components/common/header";
-import Footer from "@/components/Footer";
 import { Droplets, Wrench, Wallet, History } from "lucide-react";
 
 const features = [
@@ -9,8 +7,7 @@ const features = [
     label: "Theo dõi bảo dưỡng",
     icon: Wrench,
     badge: "Giữ xe luôn trong tình trạng tốt",
-    description:
-      "Ghi lại và nhắc bạn các mốc bảo dưỡng quan trọng dựa trên số km và thời gian sử dụng.",
+    description: "Ghi lại và nhắc bạn các mốc bảo dưỡng quan trọng dựa trên số km và thời gian sử dụng.",
     points: [
       "Lưu lịch bảo dưỡng gần nhất cho từng xe",
       "Gợi ý mốc bảo dưỡng tiếp theo",
@@ -22,8 +19,7 @@ const features = [
     label: "Nhắc thay nhớt",
     icon: Droplets,
     badge: "Không còn quên kỳ thay nhớt",
-    description:
-      "Tự động nhắc thay nhớt theo quãng đường hoặc thời gian, phù hợp từng loại nhớt.",
+    description: "Tự động nhắc thay nhớt theo quãng đường hoặc thời gian, phù hợp từng loại nhớt.",
     points: [
       "Thiết lập ngưỡng km hoặc số tháng",
       "Thông báo trước kỳ thay để bạn chủ động sắp xếp",
@@ -35,8 +31,7 @@ const features = [
     label: "Quản lý chi phí",
     icon: Wallet,
     badge: "Biết rõ xe tốn bao nhiêu tiền",
-    description:
-      "Theo dõi mọi khoản chi cho xe: xăng, sửa chữa, nâng cấp… dưới dạng bảng và biểu đồ.",
+    description: "Theo dõi mọi khoản chi cho xe: xăng, sửa chữa, nâng cấp… dưới dạng bảng và biểu đồ.",
     points: [
       "Ghi nhanh chi phí chỉ trong vài thao tác",
       "Tổng hợp theo tuần/tháng/năm",
@@ -48,8 +43,7 @@ const features = [
     label: "Lịch sử sửa chữa",
     icon: History,
     badge: "Nhìn lại toàn bộ hành trình của xe",
-    description:
-      "Lưu lại chi tiết mỗi lần sửa chữa để dễ tra cứu khi cần bảo hành hoặc bán lại.",
+    description: "Lưu lại chi tiết mỗi lần sửa chữa để dễ tra cứu khi cần bảo hành hoặc bán lại.",
     points: [
       "Lưu ngày sửa, hạng mục và chi phí",
       "Ghi chú garage/thợ sửa uy tín",
@@ -69,21 +63,17 @@ export default function FeaturesSection() {
 
         <main className="relative mx-auto max-w-6xl px-6 py-16 md:py-20 lg:py-24">
           {/* Breadcrumb / small label */}
-          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/80">
-            Tính năng
-          </div>
+          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/80">Tính năng</div>
 
           {/* Hero section */}
           <section className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-4">
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]">
-                Quản lý xe máy thông minh với{" "}
-                <span className="text-emerald-300">MotoCare</span>
+                Quản lý xe máy thông minh với <span className="text-emerald-300">MotoCare</span>
               </h1>
               <p className="text-sm leading-relaxed text-slate-300/90 sm:text-base">
-                Tất cả thông tin về bảo dưỡng, chi phí và sửa chữa được gom lại
-                trong một ứng dụng. Bạn chỉ cần tập trung chạy xe, phần còn lại
-                để MotoCare lo.
+                Tất cả thông tin về bảo dưỡng, chi phí và sửa chữa được gom lại trong một ứng dụng. Bạn chỉ cần tập
+                trung chạy xe, phần còn lại để MotoCare lo.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-300/90">
@@ -100,9 +90,7 @@ export default function FeaturesSection() {
 
             <div className="flex gap-4 text-xs text-slate-300/80">
               <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
-                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-slate-400">
-                  Lợi ích chính
-                </p>
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-slate-400">Lợi ích chính</p>
                 <ul className="mt-2 space-y-1.5">
                   <li>✔ Không quên lịch thay nhớt & bảo dưỡng</li>
                   <li>✔ Nắm rõ chi phí vận hành xe</li>
@@ -115,14 +103,10 @@ export default function FeaturesSection() {
           {/* Features grid */}
           <section className="space-y-6">
             <header className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                Bộ tính năng chính
-              </h2>
+              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Bộ tính năng chính</h2>
               <p className="text-sm text-slate-300/90">
                 Mỗi tính năng được thiết kế xoay quanh câu hỏi:{" "}
-                <span className="text-emerald-300">
-                  “Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?”
-                </span>
+                <span className="text-emerald-300">“Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?”</span>
               </p>
             </header>
 
@@ -145,9 +129,7 @@ export default function FeaturesSection() {
 
                       <div className="space-y-2">
                         <div className="inline-flex items-center gap-2">
-                          <h3 className="text-base font-semibold sm:text-lg">
-                            {feature.label}
-                          </h3>
+                          <h3 className="text-base font-semibold sm:text-lg">{feature.label}</h3>
                         </div>
                         <p className="inline-flex rounded-full bg-white/5 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-emerald-200">
                           {feature.badge}
@@ -155,9 +137,7 @@ export default function FeaturesSection() {
                       </div>
                     </div>
 
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                      {feature.description}
-                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-300">{feature.description}</p>
 
                     <ul className="mt-4 space-y-2 text-sm text-slate-200">
                       {feature.points.map((item) => (
