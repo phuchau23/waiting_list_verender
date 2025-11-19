@@ -1,55 +1,10 @@
+// src/components/PricingSection.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 export default function PricingSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 60%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      tl.from(".pricing-title", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-
-      tl.from(
-        ".pricing-card",
-        {
-          y: 50,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.2,
-        },
-        "-=0.2"
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="border-t border-white/10 bg-gradient-to-b from-[#050505] via-[#050505] to-[#020202]"
-    >
+    <section className="border-t border-white/10 bg-gradient-to-b from-[#050505] via-[#050505] to-[#020202]">
       <div className="mx-auto max-w-5xl px-4 lg:px-0 py-16 lg:py-24 text-center">
-        {/* Title */}
         <div className="pricing-title mb-10">
           <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">
             Pricing
@@ -63,7 +18,6 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {/* BASIC */}
           <div className="pricing-card rounded-3xl border border-white/10 bg-white/5 px-6 py-10 text-left flex flex-col justify-between">
@@ -89,7 +43,7 @@ export default function PricingSection() {
             </button>
           </div>
 
-          {/* STANDARD (highlight) */}
+          {/* STANDARD */}
           <div className="pricing-card rounded-3xl border border-emerald-400/60 bg-[#0f1515] px-6 py-12 text-left flex flex-col justify-between shadow-[0_20px_80px_rgba(0,0,0,0.9)] scale-[1.03]">
             <div className="space-y-4">
               <p className="inline-flex items-center rounded-full bg-emerald-400/10 border border-emerald-400/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-emerald-300">

@@ -1,14 +1,10 @@
+// src/components/DidYouKnowSection.tsx
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import type { ApexOptions } from "apexcharts";
 
-gsap.registerPlugin(ScrollTrigger);
-
-// Load ApexCharts client-side only
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -16,43 +12,10 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 export default function DidYouKnowSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".did-item", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.25,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 60%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      gsap.from(".did-title", {
-        y: 40,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-          end: "bottom 70%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  /* ---------- Pie Chart (77% quên thay nhớt) ---------- */
+  // Pie
   const pieOptions: ApexOptions = {
     labels: ["Quên thay nhớt", "Nhớ thay nhớt"],
-    colors: ["#22c55e", "#0f172a"], // emerald + dark
+    colors: ["#22c55e", "#0f172a"],
     theme: { mode: "dark" },
     stroke: { width: 0 },
     dataLabels: {
@@ -70,7 +33,7 @@ export default function DidYouKnowSection() {
 
   const pieSeries: ApexNonAxisChartSeries = [77, 23];
 
-  /* ---------- Bar Chart (ảnh hưởng lọc gió bẩn) ---------- */
+  // Bar
   const barOptions: ApexOptions = {
     chart: {
       toolbar: { show: false },
