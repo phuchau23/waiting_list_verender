@@ -7,7 +7,6 @@ import Lenis from "@studio-freight/lenis";
 
 import ContactSection from "@/components/ContactSection";
 import DidYouKnowSection from "@/components/DidYouKnowSection";
-import Footer from "@/components/Footer";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import PricingSection from "@/components/PricingSection";
 import FeaturesSection from "./feature/page";
@@ -514,8 +513,8 @@ export default function Home() {
 
             {/* Subtext */}
             <p className="hero-sub text-sm md:text-base text-white/60 max-w-md">
-              Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe
-              một cách dễ dàng – tất cả ngay trên điện thoại của bạn.
+              Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe một cách dễ dàng – tất cả ngay trên
+              điện thoại của bạn.
             </p>
 
             {/* Email form */}
@@ -532,9 +531,7 @@ export default function Home() {
 
             {/* Global partner */}
             <div className="hero-partners pt-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
-                Global Partner
-              </p>
+              <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">Global Partner</p>
               <div className="flex gap-3">
                 {["A", "B", "C", "D"].map((item) => (
                   <div
@@ -597,9 +594,7 @@ export default function Home() {
         <ContactSection />
       </section>
 
-      <section className="section-footer">
-        <Footer />
-      </section>
+      <section className="section-footer"></section>
     </div>
   );
 }
