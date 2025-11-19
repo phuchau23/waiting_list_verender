@@ -513,8 +513,8 @@ export default function Home() {
 
             {/* Subtext */}
             <p className="hero-sub text-sm md:text-base text-white/60 max-w-md">
-              Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe một cách dễ dàng – tất cả ngay trên
-              điện thoại của bạn.
+              Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe
+              một cách dễ dàng – tất cả ngay trên điện thoại của bạn.
             </p>
 
             {/* Email form */}
@@ -531,7 +531,9 @@ export default function Home() {
 
             {/* Global partner */}
             <div className="hero-partners pt-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">Global Partner</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
+                Global Partner
+              </p>
               <div className="flex gap-3">
                 {["A", "B", "C", "D"].map((item) => (
                   <div
