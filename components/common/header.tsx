@@ -96,7 +96,7 @@ export default function Header() {
               className="bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text 
               text-base font-semibold text-transparent"
             >
-              Verender
+              Verendar
             </span>
           </Link>
         </motion.div>

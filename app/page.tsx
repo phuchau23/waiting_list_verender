@@ -10,6 +10,8 @@ import DidYouKnowSection from "@/components/DidYouKnowSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import PricingSection from "@/components/PricingSection";
 import FeaturesSection from "./feature/page";
+import Header from "@/components/common/header";
+import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -483,120 +485,124 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-[#050505] text-white">
-      {/* SCROLL PROGRESS BAR BÊN PHẢI */}
-      <div className="fixed right-6 top-1/2 z-50 h-40 w-px -translate-y-1/2 overflow-hidden bg-white/10 pointer-events-none">
-        <div className="scroll-progress h-full w-full origin-bottom scale-y-0 bg-gradient-to-t from-emerald-400 via-cyan-300 to-sky-400" />
-      </div>
-
-      {/* HERO FULL SCREEN */}
-      <main className="hero-section relative flex h-screen items-center overflow-hidden">
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-10">
-          {/* LEFT: HERO TEXT */}
-          <section className="hero-content relative z-10 max-w-xl space-y-6 text-white">
-            {/* Badge */}
-            <div className="hero-badge inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs tracking-wide">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
-              <span className="font-medium uppercase text-[11px] tracking-[0.18em] text-white/80">
-                #1 Motorbike Care App
-              </span>
-            </div>
-
-            {/* Heading */}
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight space-y-1">
-              <span className="hero-heading-line block">Quản lý xe</span>
-              <span className="hero-heading-line block">dễ dàng với</span>
-              <span className="hero-heading-line block bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
-                Verender
-              </span>
-            </h1>
-
-            {/* Subtext */}
-            <p className="hero-sub text-sm md:text-base text-white/60 max-w-md">
-              Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe
-              một cách dễ dàng – tất cả ngay trên điện thoại của bạn.
-            </p>
-
-            {/* Email form */}
-            <div className="hero-form flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <input
-                type="email"
-                placeholder="Nhập email của bạn"
-                className="flex-1 rounded-full border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
-              />
-              <button className="rounded-full px-6 py-3 text-sm font-semibold bg-emerald-400 text-black hover:bg-emerald-300 transition-colors">
-                Get Started
-              </button>
-            </div>
-
-            {/* Global partner */}
-            <div className="hero-partners pt-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
-                Global Partner
-              </p>
-              <div className="flex gap-3">
-                {["A", "B", "C", "D"].map((item) => (
-                  <div
-                    key={item}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-xs font-medium text-white/70"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* RIGHT: 3D MODEL */}
-          <section className="hero-3d absolute inset-y-0 right-[-160px] hidden md:flex items-center">
-            {/* Glow nền (không chặn chuột) */}
-            <div className="hero-bg-glow absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.35),_transparent_60%)] blur-3xl" />
-
-            {/* Kawasaki Z900 3D Model */}
-            <div className="hero-3d-float relative z-[5] flex items-center justify-center py-8">
-              <iframe
-                title="Kawasaki Z900 3Dscan (retopology model)"
-                width="760"
-                height="460"
-                src="https://sketchfab.com/models/ffde1136537448178fbd82d4066b4704/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_theme=dark"
-                frameBorder="0"
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                allowFullScreen
-                className="rounded-xl"
-              ></iframe>
-            </div>
-          </section>
-
-          {/* Scroll Indicator */}
-          <div className="hero-scroll-indicator absolute left-6 bottom-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/40">
-            <span className="h-px w-6 bg-white/30" />
-            Scroll để khám phá
-          </div>
+    <>
+      <Header />
+      <div ref={pageRef} className="min-h-screen bg-[#050505] text-white">
+        {/* SCROLL PROGRESS BAR BÊN PHẢI */}
+        <div className="fixed right-6 top-1/2 z-50 h-40 w-px -translate-y-1/2 overflow-hidden bg-white/10 pointer-events-none">
+          <div className="scroll-progress h-full w-full origin-bottom scale-y-0 bg-gradient-to-t from-emerald-400 via-cyan-300 to-sky-400" />
         </div>
-      </main>
 
-      {/* CÁC SECTION PHÍA DƯỚI */}
-      <section className="section-how">
-        <HowItWorksSection />
-      </section>
+        {/* HERO FULL SCREEN */}
+        <main className="hero-section relative flex h-screen items-center overflow-hidden">
+          <div className="relative mx-auto w-full max-w-6xl px-6 py-10">
+            {/* LEFT: HERO TEXT */}
+            <section className="hero-content relative z-10 max-w-xl space-y-6 text-white">
+              {/* Badge */}
+              <div className="hero-badge inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs tracking-wide">
+                <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
+                <span className="font-medium uppercase text-[11px] tracking-[0.18em] text-white/80">
+                  #1 Motorbike Care App
+                </span>
+              </div>
 
-      <section className="section-didyou">
-        <DidYouKnowSection />
-      </section>
+              {/* Heading */}
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight space-y-1">
+                <span className="hero-heading-line block">Quản lý xe</span>
+                <span className="hero-heading-line block">dễ dàng với</span>
+                <span className="hero-heading-line block bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
+                  Verendar
+                </span>
+              </h1>
 
-      <section className="section-feature">
-        <FeaturesSection />
-      </section>
+              {/* Subtext */}
+              <p className="hero-sub text-sm md:text-base text-white/60 max-w-md">
+                Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa
+                xe một cách dễ dàng – tất cả ngay trên điện thoại của bạn.
+              </p>
 
-      <section className="section-pricing">
-        <PricingSection />
-      </section>
+              {/* Email form */}
+              <div className="hero-form flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* <input
+                  type="email"
+                  placeholder="Nhập email của bạn"
+                  className="flex-1 rounded-full border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
+                /> */}
+                <button className="rounded-full items-end px-6 py-3 text-sm font-semibold bg-emerald-400 text-black hover:bg-emerald-300 transition-colors">
+                  Get Started
+                </button>
+              </div>
 
-      <section className="section-contact">
-        <ContactSection />
-      </section>
+              {/* Global partner */}
+              <div className="hero-partners pt-6">
+                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">
+                  Global Partner
+                </p>
+                <div className="flex gap-3">
+                  {["A", "B", "C", "D"].map((item) => (
+                    <div
+                      key={item}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-xs font-medium text-white/70"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-      <section className="section-footer"></section>
-    </div>
+            {/* RIGHT: 3D MODEL */}
+            <section className="hero-3d absolute inset-y-0 right-[-160px] hidden md:flex items-center">
+              {/* Glow nền (không chặn chuột) */}
+              <div className="hero-bg-glow absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.35),_transparent_60%)] blur-3xl" />
+
+              {/* Kawasaki Z900 3D Model */}
+              <div className="hero-3d-float relative z-[5] flex items-center justify-center py-8">
+                <iframe
+                  title="Kawasaki Z900 3Dscan (retopology model)"
+                  width="760"
+                  height="460"
+                  src="https://sketchfab.com/models/ffde1136537448178fbd82d4066b4704/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_theme=dark"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  allowFullScreen
+                  className="rounded-xl"
+                ></iframe>
+              </div>
+            </section>
+
+            {/* Scroll Indicator */}
+            <div className="hero-scroll-indicator absolute left-6 bottom-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/40">
+              <span className="h-px w-6 bg-white/30" />
+              Scroll để khám phá
+            </div>
+          </div>
+        </main>
+
+        {/* CÁC SECTION PHÍA DƯỚI */}
+        <section className="section-how">
+          <HowItWorksSection />
+        </section>
+
+        <section className="section-didyou">
+          <DidYouKnowSection />
+        </section>
+
+        <section className="section-feature">
+          <FeaturesSection />
+        </section>
+
+        <section className="section-pricing">
+          <PricingSection />
+        </section>
+
+        <section className="section-contact">
+          <ContactSection />
+        </section>
+
+        <section className="section-footer"></section>
+      </div>
+      <Footer />
+    </>
   );
 }
