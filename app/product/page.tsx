@@ -21,14 +21,9 @@ export default function ProductPage() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <h1 className="mt-50 text-5xl font-bold text-white">
-                About Apps
-              </h1>
+              <h1 className="mt-50 text-5xl font-bold text-white">About Apps</h1>
               <div className="space-y-3">
-                <p className="text-2xl font-semibold text-white">
-                  {" "}
-                  Nhắc thay nhớt & linh kiện
-                </p>
+                <p className="text-2xl font-semibold text-white"> Nhắc thay nhớt & linh kiện</p>
                 <ul className="text-gray-300 space-y-2 text-lg">
                   <li>• Ứng dụng tự động nhắc bạn khi gần đến hạn thay nhớt</li>
                   <li>• Khi cần kiểm tra phanh, bugi, lốp, lọc gió</li>
@@ -61,13 +56,7 @@ export default function ProductPage() {
                 transition={{ duration: 0.5 }}
                 className="mt-50 relative rounded-3xl shadow-xl"
               >
-                <Image
-                  src="/phoneimage.png"
-                  alt="Background"
-                  width={230}
-                  height={550}
-                  className="rounded-3xl"
-                />
+                <Image src="/phoneimage.png" alt="Background" width={230} height={550} className="rounded-3xl" />
 
                 {/* bóng cho điện thoại 1 */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-white/20 rounded-full blur-xl z-0"></div>
@@ -80,13 +69,7 @@ export default function ProductPage() {
                 transition={{ duration: 0.5 }}
                 className="relative rounded-3xl shadow-xl mt-34"
               >
-                <Image
-                  src="/phone1.png"
-                  alt="App preview"
-                  width={230}
-                  height={550}
-                  className="rounded-3xl shadow-xl"
-                />
+                <Image src="/phone1.png" alt="App preview" width={230} height={550} className="rounded-3xl shadow-xl" />
 
                 {/* bóng cho điện thoại 2 */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-white/30 rounded-full blur-xl z-0"></div>
@@ -155,9 +138,7 @@ export default function ProductPage() {
                 className="-mt-2 space-y-10 text-center lg:text-left"
               >
                 {" "}
-                <h1 className="inline-block text-8xl md:text-5xl font-bold text-gray-200">
-                  About Apps
-                </h1>
+                <h1 className="inline-block text-8xl md:text-5xl font-bold text-gray-200">About Apps</h1>
                 <h2 className="text-4xl md:text-2xl font-bold text-gray-100 leading-tight">
                   Theo dõi chi phí bảo dưỡng
                 </h2>
@@ -176,9 +157,7 @@ export default function ProductPage() {
                       transition={{ duration: 0.6, delay: 0.4 + i * 0.15 }}
                       className="flex items-start gap-3 justify-center lg:justify-start"
                     >
-                      <span className="text-white text-4xl leading-none">
-                        •
-                      </span>
+                      <span className="text-white text-4xl leading-none">•</span>
                       <span>{item}</span>
                     </motion.li>
                   ))}
@@ -242,9 +221,7 @@ export default function ProductPage() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="space-y-8"
                 >
-                  <h2 className="text-4xl md:text-2xl font-bold text-white">
-                    Lịch sử sửa chữa & cảnh báo hỏng
-                  </h2>
+                  <h2 className="text-4xl md:text-2xl font-bold text-white">Lịch sử sửa chữa & cảnh báo hỏng</h2>
 
                   <ul className="space-y-5 text-lg md:text-xl text-gray-200">
                     {[
@@ -275,12 +252,7 @@ export default function ProductPage() {
                   transition={{ duration: 0.9, delay: 0.2 }}
                   className="flex justify-center lg:justify-start relative"
                 >
-                  <Image
-                    src="/phone-his.png"
-                    alt="Lịch sử sửa chữa"
-                    width={220}
-                    height={280}
-                  />
+                  <Image src="/phone-his.png" alt="Lịch sử sửa chữa" width={220} height={280} />
 
                   {/* Đoạn văn nhỏ lệch phải dưới chân hình */}
                   <motion.div
@@ -291,11 +263,10 @@ export default function ProductPage() {
                     className="absolute right-0 bottom-[-150px] w-[320px] text-left text-gray-200 text-sm leading-relaxed"
                   >
                     <p>
-                      • Ở SỐ MỘT CÓ THỂ THAY THẾ KIỂU NHƯ TÍCH SỐ NGÀY BẢO NHIỄU
-                      NGÀY ĐÃ ĐI SỬA CHỮA RỒI WEB SẼ TỰ ĐỘNG CẬP NHẬT TÍCH NGÀY
+                      • Ở SỐ MỘT CÓ THỂ THAY THẾ KIỂU NHƯ TÍCH SỐ NGÀY BẢO NHIỄU NGÀY ĐÃ ĐI SỬA CHỮA RỒI WEB SẼ TỰ ĐỘNG
+                      CẬP NHẬT TÍCH NGÀY
                       <br />
-                      ĐI SỬA CHỮA RỒI KẾT HỢP LẠI TẠO NÊN THÔNG BÁO CÒN NHIỀU
-                      NGÀY PHẢI SỬA XE
+                      ĐI SỬA CHỮA RỒI KẾT HỢP LẠI TẠO NÊN THÔNG BÁO CÒN NHIỀU NGÀY PHẢI SỬA XE
                     </p>
                   </motion.div>
                 </motion.div>
