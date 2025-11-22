@@ -5,11 +5,8 @@ import { FormEvent, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function ContactSection() {
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [wishMessage, setWishMessage] = useState("");
+  const [description, setDescription] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{
@@ -33,15 +30,23 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Validate đã chọn 1 trong 3 mô tả
+    if (!description) {
+      showToast("error", "Vui lòng chọn một nội dung mô tả.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const formData = new FormData();
       formData.append("Email", email);
-      formData.append("FirstName", firstName);
-      formData.append("LastName", lastName);
-      formData.append("PhoneNumber", phoneNumber);
-      formData.append("WishMessage", wishMessage);
+      // Các field còn lại không dùng, truyền rỗng (BE coi như null)
+      formData.append("FirstName", "");
+      formData.append("LastName", "");
+      formData.append("PhoneNumber", "");
+      formData.append("WishMessage", description);
 
       const res = await fetch(
         "https://waitinglistweb.onrender.com/api/waiting-list",
@@ -61,11 +66,8 @@ export default function ContactSection() {
         showToast("success", "Đăng ký waiting list thành công. Cảm ơn bạn!");
 
         // reset form
-        setLastName("");
-        setFirstName("");
         setEmail("");
-        setPhoneNumber("");
-        setWishMessage("");
+        setDescription("");
       } else {
         showToast(
           "error",
@@ -170,35 +172,7 @@ export default function ContactSection() {
               </h3>
 
               <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
-                      Họ
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Nguyễn"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
-                      Tên
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="An"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
+                <div className="gap-4">
                   <div className="space-y-2">
                     <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
                       Email
@@ -212,32 +186,34 @@ export default function ContactSection() {
                       required
                     />
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
-                      Số điện thoại
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="09xx xxx xxx"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
-                    />
-                  </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
-                    Mong muốn / Nội dung
+                    LÝ DO
                   </label>
-                  <textarea
-                    rows={4}
-                    placeholder="Hãy chia sẻ vấn đề của bạn về việc quản lý, bảo dưỡng hoặc chi phí vận hành xe..."
-                    value={wishMessage}
-                    onChange={(e) => setWishMessage(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent resize-none"
-                  />
+
+                  <div className=" pt-1.5 grid grid-cols-1 gap-3">
+                    {[
+                      "Tôi thích về việc tiện lợi của nền tảng",
+                      "Tôi thấy có nhiều tính năng rất hay",
+                      "Tôi thấy sự sáng tạo của nền tảng",
+                    ].map((txt) => (
+                      <button
+                        key={txt}
+                        type="button"
+                        onClick={() => setDescription(txt)}
+                        className={`w-full text-left rounded-xl px-4 py-3 text-sm transition border 
+                          ${
+                            description === txt
+                              ? "bg-emerald-400 text-black border-emerald-400"
+                              : "bg-black/40 text-white/70 border-white/10 hover:bg-white/10"
+                          }`}
+                      >
+                        {txt}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="pt-2">
