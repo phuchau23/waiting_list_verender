@@ -19,6 +19,12 @@ interface WaitlistMeta {
   hasNextPage: boolean;
 }
 
+const DESCRIPTION_OPTIONS = [
+  "Tôi thích về việc tiện lợi của nền tảng",
+  "Tôi thấy có nhiều tính năng rất hay",
+  "Tôi thấy sự sáng tạo của nền tảng",
+];
+
 export default function DashboardPage() {
   const [items, setItems] = useState<WaitlistItem[]>([]);
   const [meta, setMeta] = useState<WaitlistMeta | null>(null);
@@ -30,6 +36,8 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
 
   const [search, setSearch] = useState("");
+  const [descriptionFilter, setDescriptionFilter] = useState<string>("");
+
   const [isExporting, setIsExporting] = useState(false);
   const [exportHint, setExportHint] = useState<null | string>(null);
 
@@ -76,21 +84,31 @@ export default function DashboardPage() {
     fetchData();
   }, [page, size]);
 
-  // Lọc theo search
+  // Lọc theo search + filter description
   const filteredItems = useMemo(() => {
-    const term = search.toLowerCase().trim();
-    if (!term) return items;
+    let result = [...items];
 
-    return items.filter((u) => {
-      const fullName = `${u.firstName ?? ""} ${u.lastName ?? ""}`.toLowerCase();
-      return (
-        fullName.includes(term) ||
-        (u.email ?? "").toLowerCase().includes(term) ||
-        (u.phoneNumber ?? "").toLowerCase().includes(term) ||
-        (u.wishMessage ?? "").toLowerCase().includes(term)
-      );
-    });
-  }, [items, search]);
+    const term = search.toLowerCase().trim();
+    if (term) {
+      result = result.filter((u) => {
+        const fullName = `${u.firstName ?? ""} ${
+          u.lastName ?? ""
+        }`.toLowerCase();
+        return (
+          fullName.includes(term) ||
+          (u.email ?? "").toLowerCase().includes(term) ||
+          (u.phoneNumber ?? "").toLowerCase().includes(term) ||
+          (u.wishMessage ?? "").toLowerCase().includes(term)
+        );
+      });
+    }
+
+    if (descriptionFilter) {
+      result = result.filter((u) => u.wishMessage === descriptionFilter);
+    }
+
+    return result;
+  }, [items, search, descriptionFilter]);
 
   const handleExport = () => {
     if (filteredItems.length === 0) {
@@ -105,27 +123,10 @@ export default function DashboardPage() {
     const dateStr = now.toISOString().slice(0, 10);
     const timeStr = now.toTimeString().slice(0, 8);
 
-    const header = [
-      "STT",
-      "Họ",
-      "Tên",
-      "Họ tên đầy đủ",
-      "Email",
-      "Số điện thoại",
-      "Lời nhắn",
-    ];
+    const header = ["STT", "Email", "Nội dung"];
 
     const rows = filteredItems.map((u, idx) => {
-      const fullName = `${u.firstName ?? ""} ${u.lastName ?? ""}`.trim();
-      return [
-        idx + 1,
-        u.firstName ?? "",
-        u.lastName ?? "",
-        fullName,
-        u.email ?? "",
-        u.phoneNumber ?? "",
-        u.wishMessage ?? "",
-      ];
+      return [idx + 1, u.email ?? "", u.wishMessage ?? ""];
     });
 
     const metaLines = [
@@ -222,32 +223,48 @@ export default function DashboardPage() {
           {/* glow viền nhẹ */}
           <div className="pointer-events-none absolute -inset-px rounded-3xl border border-slate-500/10 [mask-image:radial-gradient(circle_at_top,_black,transparent)]" />
 
-          {/* Top row: title + search + export */}
+          {/* Top row: title + filters + search + export */}
           <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <p className="text-sm font-medium text-slate-50">
                 Waiting list từ form landing
               </p>
               <p className="text-xs text-slate-400">
-                Tìm theo tên, email, số điện thoại hoặc lời nhắn. Dữ liệu được
-                lấy trực tiếp từ API.
+                Tìm theo email hoặc nội dung đã chọn. Dữ liệu được lấy trực tiếp
+                từ API.
               </p>
             </div>
 
             <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
+              {/* Filter theo description */}
+              <select
+                value={descriptionFilter}
+                onChange={(e) => setDescriptionFilter(e.target.value)}
+                className="w-full rounded-full border border-slate-700 bg-slate-900/80 px-3 py-2.5 text-xs text-slate-100 outline-none ring-0 transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40 sm:w-64"
+              >
+                <option value="">Tất cả</option>
+                {DESCRIPTION_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+
+              {/* Search */}
               <div className="relative">
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search tên / email / phone / lời nhắn..."
-                  className="w-full min-w-[240px] rounded-full border border-slate-700 bg-slate-900/80 px-10 py-2.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none ring-0 transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40 sm:w-72 md:w-80"
+                  placeholder="Search email / nội dung..."
+                  className="w-full min-w-[220px] rounded-full border border-slate-700 bg-slate-900/80 px-10 py-2.5 text-xs text-slate-100 placeholder:text-slate-500 outline-none ring-0 transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40 sm:w-72 md:w-80"
                 />
                 <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[11px] text-slate-500">
                   /
                 </span>
               </div>
 
+              {/* Export */}
               <button
                 onClick={handleExport}
                 disabled={isExporting || filteredItems.length === 0}
@@ -257,9 +274,7 @@ export default function DashboardPage() {
                   Export
                 </span>
                 <span className="text-[11px] text-slate-300">
-                  {isExporting
-                    ? "Đang xử lý..."
-                    : `${filteredItems.length} dòng`}
+                  {isExporting ? "Đang xử lý..." : ""}
                 </span>
               </button>
             </div>
@@ -285,19 +300,15 @@ export default function DashboardPage() {
                 <thead className="sticky top-0 z-10 bg-slate-950/95 text-[11px] uppercase tracking-[0.16em] text-slate-400 backdrop-blur-sm">
                   <tr>
                     <th className="px-4 py-3 text-left w-[70px]">STT</th>
-                    <th className="px-4 py-3 text-left">Họ tên</th>
                     <th className="px-4 py-3 text-left">Email</th>
-                    <th className="px-4 py-3 text-left whitespace-nowrap">
-                      Số điện thoại
-                    </th>
-                    <th className="px-4 py-3 text-left">Lời nhắn</th>
+                    <th className="px-4 py-3 text-left">Nội dung</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loading && (
                     <tr>
                       <td
-                        colSpan={5}
+                        colSpan={3}
                         className="px-4 py-10 text-center text-xs text-slate-400"
                       >
                         Đang tải dữ liệu từ API...
@@ -308,7 +319,7 @@ export default function DashboardPage() {
                   {!loading && filteredItems.length === 0 && (
                     <tr>
                       <td
-                        colSpan={5}
+                        colSpan={3}
                         className="px-4 py-10 text-center text-xs text-slate-500"
                       >
                         Không tìm thấy entry nào phù hợp với bộ lọc hiện tại.
@@ -318,9 +329,6 @@ export default function DashboardPage() {
 
                   {!loading &&
                     filteredItems.map((user, idx) => {
-                      const fullName = `${user.firstName ?? ""} ${
-                        user.lastName ?? ""
-                      }`.trim();
                       const index =
                         (currentPage - 1) * (meta?.pageSize ?? size) + idx + 1;
 
@@ -334,13 +342,6 @@ export default function DashboardPage() {
                             {index}
                           </td>
 
-                          {/* Họ tên */}
-                          <td className="px-4 py-3 align-middle">
-                            <p className="text-sm font-medium text-slate-50">
-                              {fullName || "(Chưa có tên)"}
-                            </p>
-                          </td>
-
                           {/* Email */}
                           <td className="px-4 py-3 align-middle">
                             <p className="text-xs text-slate-200">
@@ -348,14 +349,7 @@ export default function DashboardPage() {
                             </p>
                           </td>
 
-                          {/* Phone */}
-                          <td className="px-4 py-3 align-middle">
-                            <p className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-[11px] text-slate-100">
-                              {user.phoneNumber || "—"}
-                            </p>
-                          </td>
-
-                          {/* Wish message */}
+                          {/* Wish message / Description */}
                           <td className="px-4 py-3 align-middle">
                             <p className="text-xs text-slate-200 line-clamp-2">
                               {user.wishMessage || "—"}
