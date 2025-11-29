@@ -90,13 +90,13 @@ export default function Header() {
               className="inline-flex h-8 w-8 items-center justify-center rounded-full 
               bg-gradient-to-tr from-emerald-400 via-cyan-400 to-sky-400 text-[12px] font-bold text-black"
             >
-              V
+              P
             </span>
             <span
               className="bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text 
               text-base font-semibold text-transparent"
             >
-              Verendar
+              ProCare
             </span>
           </Link>
         </motion.div>

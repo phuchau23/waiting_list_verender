@@ -31,7 +31,7 @@ export default function HowItWorksSection() {
             </div>
             <h3 className="font-semibold text-white">Đăng kí</h3>
             <p className="text-xs md:text-sm text-white/70 max-w-[240px] mx-auto leading-relaxed">
-              Đăng ký tài khoản MotoCare và thêm chiếc xe đầu tiên của bạn.
+              Đăng ký tài khoản ProCare và thêm chiếc xe đầu tiên của bạn.
             </p>
           </div>
 

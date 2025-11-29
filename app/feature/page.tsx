@@ -69,11 +69,11 @@ export default function FeaturesSection() {
           <section className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-4">
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]">
-                Quản lý xe máy thông minh với <span className="text-emerald-300">MotoCare</span>
+                Quản lý xe máy thông minh với <span className="text-emerald-300">ProCare</span>
               </h1>
               <p className="text-sm leading-relaxed text-slate-300/90 sm:text-base">
                 Tất cả thông tin về bảo dưỡng, chi phí và sửa chữa được gom lại trong một ứng dụng. Bạn chỉ cần tập
-                trung chạy xe, phần còn lại để MotoCare lo.
+                trung chạy xe, phần còn lại để ProCare lo.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-300/90">

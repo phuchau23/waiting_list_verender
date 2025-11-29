@@ -511,7 +511,7 @@ export default function Home() {
                 <span className="hero-heading-line block">Quản lý xe</span>
                 <span className="hero-heading-line block">dễ dàng với</span>
                 <span className="hero-heading-line block bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
-                  Verendar
+                  ProCare
                 </span>
               </h1>
 
@@ -557,7 +557,7 @@ export default function Home() {
               <div className="hero-bg-glow absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.35),_transparent_60%)] blur-3xl" />
 
               {/* Kawasaki Z900 3D Model */}
-              <div className="hero-3d-float relative z-[5] flex items-center justify-center py-8">
+              <div className="hero-3d-float relative z-5 flex items-center justify-center py-8">
                 <iframe
                   title="Kawasaki Z900 3Dscan (retopology model)"
                   width="760"

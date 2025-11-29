@@ -88,7 +88,7 @@ export default function DidYouKnowSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Bạn có biết?</h2>
           <p className="text-xs md:text-sm text-white/70 max-w-2xl mx-auto">
             Một vài con số cho thấy vì sao việc quên bảo dưỡng xe lại gây tốn
-            kém đến vậy – và MotoCare có thể giúp bạn tránh điều đó.
+            kém đến vậy – và ProCare có thể giúp bạn tránh điều đó.
           </p>
         </div>
 
