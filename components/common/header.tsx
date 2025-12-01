@@ -86,12 +86,7 @@ export default function Header() {
           className="font-semibold"
         >
           <Link href="/" className="flex items-center gap-2">
-            <span
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full 
-              bg-gradient-to-tr from-emerald-400 via-cyan-400 to-sky-400 text-[12px] font-bold text-black"
-            >
-              P
-            </span>
+            <img src="/logo.png" alt="Logo" className="w-9 h-9" />
             <span
               className="bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text 
               text-base font-semibold text-transparent"
