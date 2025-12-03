@@ -6,15 +6,10 @@ export default function PricingSection() {
     <section className="border-t border-white/10 bg-gradient-to-b from-[#050505] via-[#050505] to-[#020202]">
       <div className="mx-auto max-w-5xl px-4 lg:px-0 py-16 lg:py-24 text-center">
         <div className="pricing-title mb-10">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">
-            Pricing
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-white">
-            Chọn kế hoạch của bạn
-          </h2>
+          <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">Pricing</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-white">Chọn kế hoạch của bạn</h2>
           <p className="mt-3 text-sm md:text-base text-white/55 max-w-2xl mx-auto leading-relaxed">
-            Chọn gói phù hợp với nhu cầu của bạn – bắt đầu miễn phí và nâng cấp
-            khi cần thêm tính năng.
+            Chọn gói phù hợp với nhu cầu của bạn – bắt đầu miễn phí và nâng cấp khi cần thêm tính năng.
           </p>
         </div>
 
@@ -22,9 +17,7 @@ export default function PricingSection() {
           {/* BASIC */}
           <div className="pricing-card rounded-3xl border border-white/10 bg-white/5 px-6 py-10 text-left flex flex-col justify-between">
             <div className="space-y-4">
-              <h3 className="text-base font-semibold text-white">
-                Gói miễn phí
-              </h3>
+              <h3 className="text-base font-semibold text-white">Gói miễn phí</h3>
               <div className="flex items-baseline gap-1">
                 <span className="text-3xl font-bold text-white">₫0</span>
                 <span className="text-xs text-white/50">/tháng</span>
@@ -49,16 +42,12 @@ export default function PricingSection() {
               <p className="inline-flex items-center rounded-full bg-emerald-400/10 border border-emerald-400/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-emerald-300">
                 Recommended
               </p>
-              <h3 className="text-base font-semibold text-white">
-                Gói Standard
-              </h3>
+              <h3 className="text-base font-semibold text-white">Gói Standard</h3>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-white">₫79.000</span>
+                <span className="text-3xl font-bold text-white">₫19.000</span>
                 <span className="text-xs text-white/50">/tháng</span>
               </div>
-              <p className="text-xs text-white/65">
-                Phù hợp cho đa số người dùng, quản lý nhiều xe.
-              </p>
+              <p className="text-xs text-white/65">Phù hợp cho đa số người dùng, quản lý nhiều xe.</p>
 
               <ul className="mt-4 space-y-2 text-xs text-white/80">
                 <li>· Theo dõi tới 3 xe</li>
@@ -76,16 +65,12 @@ export default function PricingSection() {
           {/* PREMIUM */}
           <div className="pricing-card rounded-3xl border border-white/10 bg-white/5 px-6 py-10 text-left flex flex-col justify-between">
             <div className="space-y-4">
-              <h3 className="text-base font-semibold text-white">
-                Gói Premium
-              </h3>
+              <h3 className="text-base font-semibold text-white">Gói Premium</h3>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-white">₫149.000</span>
+                <span className="text-3xl font-bold text-white">₫39.000</span>
                 <span className="text-xs text-white/50">/tháng</span>
               </div>
-              <p className="text-xs text-white/55">
-                Cho biker chơi lớn, nhiều xe và nhiều chuyến đi.
-              </p>
+              <p className="text-xs text-white/55">Cho biker chơi lớn, nhiều xe và nhiều chuyến đi.</p>
 
               <ul className="mt-4 space-y-2 text-xs text-white/70">
                 <li>· Theo dõi không giới hạn số xe</li>
