@@ -99,19 +99,19 @@ export default function ContactSection() {
             className="fixed top-6 left-1/2 z-[60] -translate-x-1/2"
           >
             <div
-              className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm shadow-[0_18px_50px_rgba(0,0,0,0.6)] backdrop-blur-lg
+              className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm shadow-[0_18px_50px_rgba(0,0,0,0.3)] backdrop-blur-lg
                 ${
                   toast.type === "success"
-                    ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-100"
-                    : "border-red-400/40 bg-red-400/10 text-red-100"
+                    ? "border-red-500/40 bg-red-50 text-red-900"
+                    : "border-red-400/40 bg-red-100 text-red-900"
                 }`}
             >
               <div
                 className={`h-7 w-7 flex items-center justify-center rounded-full text-xs font-semibold
                   ${
                     toast.type === "success"
-                      ? "bg-emerald-400 text-black"
-                      : "bg-red-400 text-black"
+                      ? "bg-red-600 text-white"
+                      : "bg-red-500 text-white"
                   }`}
               >
                 {toast.type === "success" ? "✓" : "!"}
@@ -129,28 +129,28 @@ export default function ContactSection() {
         )}
       </AnimatePresence>
 
-      <section id="contact" className="relative py-20 px-6 md:px-8 lg:px-12">
+      <section id="contact" className="relative py-20 px-6 md:px-8 lg:px-12 bg-gray-50">
         {/* Gradient glow background */}
         <div className="pointer-events-none absolute inset-0 flex justify-center">
-          <div className="h-64 w-[70%] max-w-4xl bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.35),_transparent_60%)] opacity-60 blur-3xl" />
+          <div className="h-64 w-[70%] max-w-4xl bg-[radial-gradient(circle_at_top,_rgba(239,68,68,0.15),_transparent_60%)] opacity-50 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-5xl rounded-3xl border border-white/10 bg-black/40 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.18),_transparent_55%)] shadow-[0_24px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl">
+        <div className="relative mx-auto max-w-5xl rounded-3xl border border-red-100 bg-white shadow-[0_24px_80px_rgba(239,68,68,0.1)]">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* LEFT: TEXT / DESCRIPTION */}
-            <div className="contact-left flex flex-col justify-between gap-8 p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-white/8">
+            <div className="contact-left flex flex-col justify-between gap-8 p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-red-100">
               <div className="space-y-6">
-                <button className="rounded-full border border-white/20 bg-black/40 px-4 py-1.5 text-xs font-medium tracking-[0.16em] text-white/70 uppercase">
+                <button className="rounded-full border border-red-100 bg-red-50/50 px-4 py-1.5 text-xs font-medium tracking-[0.16em] text-gray-600 uppercase">
                   Contact
                 </button>
 
                 <div className="space-y-3">
-                  <h2 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
+                  <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 leading-tight">
                     Get in touch
                     <br />
                     with us!
                   </h2>
-                  <p className="text-sm md:text-base text-white/60 max-w-md">
+                  <p className="text-sm md:text-base text-gray-600 max-w-md">
                     Có câu hỏi, góp ý hay ý tưởng tính năng mới cho Verender?
                     Hãy gửi cho chúng tôi – đội ngũ luôn sẵn sàng lắng nghe và
                     đồng hành cùng hành trình chăm xe của bạn.
@@ -159,7 +159,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <button className="inline-flex items-center justify-center rounded-full bg-emerald-400 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_12px_30px_rgba(16,185,129,0.45)] hover:bg-emerald-300 transition-colors">
+                <button className="inline-flex items-center justify-center rounded-full bg-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(239,68,68,0.2)] hover:bg-red-600 transition-colors">
                   Contact Us
                 </button>
               </div>
@@ -167,14 +167,14 @@ export default function ContactSection() {
 
             {/* RIGHT: FORM */}
             <div className="contact-form p-8 md:p-10 lg:p-12">
-              <h3 className="mb-6 text-lg font-semibold text-white">
+              <h3 className="mb-6 text-lg font-semibold text-gray-800">
                 Liên hệ với chúng tôi
               </h3>
 
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="gap-4">
                   <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
+                    <label className="text-xs font-medium uppercase tracking-[0.16em] text-gray-600">
                       Email
                     </label>
                     <input
@@ -182,14 +182,14 @@ export default function ContactSection() {
                       placeholder="you@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
+                      className="w-full rounded-xl border border-red-100 bg-red-50/50 px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400/60 focus:border-transparent"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-medium uppercase tracking-[0.16em] text-white/50">
+                  <label className="text-xs font-medium uppercase tracking-[0.16em] text-gray-600">
                     LÝ DO
                   </label>
 
@@ -206,8 +206,8 @@ export default function ContactSection() {
                         className={`w-full text-left rounded-xl px-4 py-3 text-sm transition border 
                           ${
                             description === txt
-                              ? "bg-emerald-400 text-black border-emerald-400"
-                              : "bg-black/40 text-white/70 border-white/10 hover:bg-white/10"
+                              ? "bg-red-500 text-white border-red-500"
+                              : "bg-red-50/50 text-gray-700 border-red-100 hover:bg-red-50"
                           }`}
                       >
                         {txt}
@@ -220,13 +220,13 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto rounded-full bg-emerald-400 px-8 py-3 text-sm font-semibold text-black shadow-[0_14px_40px_rgba(16,185,129,0.45)] hover:bg-emerald-300 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full md:w-auto rounded-full bg-red-500 px-8 py-3 text-sm font-semibold text-white shadow-[0_14px_40px_rgba(239,68,68,0.2)] hover:bg-red-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Đang gửi..." : "Submit"}
                   </button>
                 </div>
 
-                <p className="text-[11px] text-white/40 pt-1">
+                <p className="text-[11px] text-gray-500 pt-1">
                   Bằng cách gửi form, bạn đồng ý để Verender liên hệ lại qua
                   email hoặc số điện thoại bạn cung cấp.
                 </p>

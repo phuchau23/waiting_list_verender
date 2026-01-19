@@ -9,9 +9,9 @@ export default function ProductPage() {
   return (
     <>
       <Header />
-      <div className="w-full min-h-screen bg-black ">
+      <div className="w-full min-h-screen bg-gray-50 ">
         {/* ==================== PHẦN CŨ - KHÔNG ĐỘNG GÌ HẾT ==================== */}
-        <section className="w-full flex items-center bg-black -mt-8">
+        <section className="w-full flex items-center bg-gray-50 -mt-8">
           <div className="max-w-7xl mx-auto px-6 pt-10 pb-20 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
             {/* LEFT CONTENT */}
             <motion.div
@@ -21,10 +21,10 @@ export default function ProductPage() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <h1 className="mt-50 text-5xl font-bold text-white">About Apps</h1>
+              <h1 className="mt-50 text-5xl font-bold text-gray-800">About Apps</h1>
               <div className="space-y-3">
-                <p className="text-2xl font-semibold text-white"> Nhắc thay nhớt & linh kiện</p>
-                <ul className="text-gray-300 space-y-2 text-lg">
+                <p className="text-2xl font-semibold text-gray-800"> Nhắc thay nhớt & linh kiện</p>
+                <ul className="text-gray-600 space-y-2 text-lg">
                   <li>• Ứng dụng tự động nhắc bạn khi gần đến hạn thay nhớt</li>
                   <li>• Khi cần kiểm tra phanh, bugi, lốp, lọc gió</li>
                   <li>• Lịch sử bảo dưỡng từng lần</li>
@@ -34,7 +34,7 @@ export default function ProductPage() {
               <motion.button
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-6 px-8 py-4 bg-white text-black rounded-full text-lg font-bold shadow-lg"
+                className="mt-6 px-8 py-4 bg-red-500 text-white rounded-full text-lg font-bold shadow-md shadow-red-500/20 hover:bg-red-600 transition-colors"
               >
                 Đăng ký ngay!
               </motion.button>
@@ -59,7 +59,7 @@ export default function ProductPage() {
                 <Image src="/phoneimage.png" alt="Background" width={230} height={550} className="rounded-3xl" />
 
                 {/* bóng cho điện thoại 1 */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-white/20 rounded-full blur-xl z-0"></div>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-red-200/30 rounded-full blur-xl z-0"></div>
               </motion.div>
 
               <motion.div
@@ -72,7 +72,7 @@ export default function ProductPage() {
                 <Image src="/phone1.png" alt="App preview" width={230} height={550} className="rounded-3xl shadow-xl" />
 
                 {/* bóng cho điện thoại 2 */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-white/30 rounded-full blur-xl z-0"></div>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-12 w-3/4 h-12 bg-red-200/40 rounded-full blur-xl z-0"></div>
               </motion.div>
 
               {/* <motion.div
@@ -108,7 +108,7 @@ export default function ProductPage() {
 
         {/* ==================== SECTION MỚI - CHUẨN HÌNH BẠN GỬI 100% ==================== */}
 
-        <section className="w-full min-h-screen flex items-center bg-black">
+        <section className="w-full min-h-screen flex items-center bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 py-32">
             {/* 3 cột: Hình trái – Chữ giữa – Hình phải */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
@@ -138,11 +138,11 @@ export default function ProductPage() {
                 className="-mt-2 space-y-10 text-center lg:text-left"
               >
                 {" "}
-                <h1 className="inline-block text-8xl md:text-5xl font-bold text-gray-200">About Apps</h1>
-                <h2 className="text-4xl md:text-2xl font-bold text-gray-100 leading-tight">
+                <h1 className="inline-block text-8xl md:text-5xl font-bold text-gray-700">About Apps</h1>
+                <h2 className="text-4xl md:text-2xl font-bold text-gray-800 leading-tight">
                   Theo dõi chi phí bảo dưỡng
                 </h2>
-                <ul className="space-y-6 text-xl md:text-xl text-gray-100">
+                <ul className="space-y-6 text-xl md:text-xl text-gray-600">
                   {[
                     "Tự lưu & phân loại chi phí",
                     "So sánh giá bạn trả với thị trường",
@@ -157,7 +157,7 @@ export default function ProductPage() {
                       transition={{ duration: 0.6, delay: 0.4 + i * 0.15 }}
                       className="flex items-start gap-3 justify-center lg:justify-start"
                     >
-                      <span className="text-white text-4xl leading-none">•</span>
+                      <span className="text-red-500 text-4xl leading-none">•</span>
                       <span>{item}</span>
                     </motion.li>
                   ))}
@@ -191,8 +191,8 @@ export default function ProductPage() {
             </div>
           </div>
         </section>
-        <section className="w-full min-h-screen flex items-center bg-black">
-          <div className="w-full bg-black py-32">
+        <section className="w-full min-h-screen flex items-center bg-gray-50">
+          <div className="w-full bg-gray-50 py-32">
             <div className="max-w-7xl mx-auto px-6">
               {/* Layout 3 phần: Phone trái - Text giữa - Phone phải */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
@@ -221,9 +221,9 @@ export default function ProductPage() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="space-y-8"
                 >
-                  <h2 className="text-4xl md:text-2xl font-bold text-white">Lịch sử sửa chữa & cảnh báo hỏng</h2>
+                  <h2 className="text-4xl md:text-2xl font-bold text-gray-800">Lịch sử sửa chữa & cảnh báo hỏng</h2>
 
-                  <ul className="space-y-5 text-lg md:text-xl text-gray-200">
+                  <ul className="space-y-5 text-lg md:text-xl text-gray-600">
                     {[
                       "Lưu lịch sử sửa chữa",
                       "Theo dõi km & tuổi thọ linh kiện",
@@ -237,7 +237,7 @@ export default function ProductPage() {
                         transition={{ delay: 0.5 + i * 0.15, duration: 0.6 }}
                         className="flex items-center gap-4"
                       >
-                        <span className="text-white text-3xl">•</span>
+                        <span className="text-red-500 text-3xl">•</span>
                         <span>{item}</span>
                       </motion.li>
                     ))}
@@ -260,7 +260,7 @@ export default function ProductPage() {
                     whileInView={{ opacity: 1, y: 0, x: -100 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="absolute right-0 bottom-[-150px] w-[320px] text-left text-gray-200 text-sm leading-relaxed"
+                    className="absolute right-0 bottom-[-150px] w-[320px] text-left text-gray-700 text-sm leading-relaxed"
                   >
                     <p>
                       • Ở SỐ MỘT CÓ THỂ THAY THẾ KIỂU NHƯ TÍCH SỐ NGÀY BẢO NHIỄU NGÀY ĐÃ ĐI SỬA CHỮA RỒI WEB SẼ TỰ ĐỘNG
