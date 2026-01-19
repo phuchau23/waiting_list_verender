@@ -42,8 +42,8 @@ export default function Header() {
           width: "100%",
           height: 72,
           borderRadius: 0,
-          backgroundColor: "rgba(5,5,5,0.92)",
-          boxShadow: "0 1px 0 rgba(255,255,255,0.05)",
+          backgroundColor: "rgba(249,250,251,0.95)",
+          boxShadow: "0 1px 0 rgba(239,68,68,0.08)",
         },
 
         // 🟢 TRẠNG THÁI DYNAMIC – NHỎ LẠI, TRẮNG MỜ, KHÔNG NHÁY
@@ -54,10 +54,10 @@ export default function Header() {
           width: "min(100% - 3rem, 680px)", // UI rộng thoáng hơn
           height: 56, // dynamic cao hơn → sang trọng hơn
           borderRadius: 9999,
-          backgroundColor: "rgba(255,255,255,0.14)", // trắng nhẹ – không flash
+          backgroundColor: "rgba(249,250,251,0.95)", // trắng nhẹ – không flash
           backdropFilter: "blur(16px)",
-          border: "1px solid rgba(255,255,255,0.18)",
-          boxShadow: "0 8px 30px rgba(255,255,255,0.05)", // rất nhẹ → không bị nháy
+          border: "1px solid rgba(239,68,68,0.15)",
+          boxShadow: "0 8px 30px rgba(239,68,68,0.1)", // rất nhẹ → không bị nháy
         },
       }}
       transition={{
@@ -86,14 +86,9 @@ export default function Header() {
           className="font-semibold"
         >
           <Link href="/" className="flex items-center gap-2">
+            <img src="/logo_main.png" alt="Logo" className="w-9 h-9" />
             <span
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full 
-              bg-gradient-to-tr from-emerald-400 via-cyan-400 to-sky-400 text-[12px] font-bold text-black"
-            >
-              V
-            </span>
-            <span
-              className="bg-gradient-to-r from-emerald-400 via-cyan-300 to-sky-400 bg-clip-text 
+              className="bg-gradient-to-r from-red-500 via-red-400 to-red-300 bg-clip-text 
               text-base font-semibold text-transparent"
             >
               Verendar
@@ -117,7 +112,7 @@ export default function Header() {
                 {active && (
                   <motion.div
                     layoutId="nav-highlight"
-                    className="absolute inset-0 rounded-full bg-white/15"
+                    className="absolute inset-0 rounded-full bg-red-50"
                     transition={{
                       type: "spring",
                       stiffness: 300,
@@ -132,8 +127,8 @@ export default function Header() {
                     "relative rounded-full px-4 transition-colors whitespace-nowrap",
                     isCompact ? "py-1.5" : "py-2",
                     active
-                      ? "text-white font-semibold"
-                      : "text-gray-300 hover:text-white",
+                      ? "text-red-500 font-semibold"
+                      : "text-gray-600 hover:text-red-500",
                   ].join(" ")}
                 >
                   {item.name}

@@ -55,42 +55,42 @@ const features = [
 export default function FeaturesSection() {
   return (
     <>
-      <div className="min-h-screen bg-[#050505] text-white">
+      <div className="min-h-screen bg-gray-50 text-gray-800">
         {/* Background glow */}
-        <div className="pointer-events-none fixed inset-0 opacity-60 blur-3xl">
-          <div className="absolute -top-32 left-1/2 h-72 w-[60%] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.35),_transparent_60%)]" />
+        <div className="pointer-events-none fixed inset-0 opacity-30 blur-3xl">
+          <div className="absolute -top-32 left-1/2 h-72 w-[60%] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_top,_rgba(239,68,68,0.15),_transparent_60%)]" />
         </div>
 
         <main className="relative mx-auto max-w-6xl px-6 py-16 md:py-20 lg:py-24">
           {/* Breadcrumb / small label */}
-          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-emerald-300/80">Tính năng</div>
+          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-red-500">Tính năng</div>
 
           {/* Hero section */}
           <section className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-4">
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.6rem]">
-                Quản lý xe máy thông minh với <span className="text-emerald-300">MotoCare</span>
+                Quản lý xe máy thông minh với <span className="text-red-500">Verendar</span>
               </h1>
-              <p className="text-sm leading-relaxed text-slate-300/90 sm:text-base">
+              <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                 Tất cả thông tin về bảo dưỡng, chi phí và sửa chữa được gom lại trong một ứng dụng. Bạn chỉ cần tập
-                trung chạy xe, phần còn lại để MotoCare lo.
+                trung chạy xe, phần còn lại để Verendar lo.
               </p>
 
-              <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-300/90">
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+              <div className="mt-4 flex flex-wrap gap-3 text-xs text-gray-600">
+                <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50/50 px-3 py-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
                   Theo dõi nhiều xe trong một tài khoản
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50/50 px-3 py-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
                   Thiết kế cho người dùng Việt Nam
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-4 text-xs text-slate-300/80">
-              <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
-                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-slate-400">Lợi ích chính</p>
+            <div className="flex gap-4 text-xs text-gray-600">
+              <div className="rounded-2xl border border-red-100 bg-red-50/50 px-4 py-3">
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-gray-500">Lợi ích chính</p>
                 <ul className="mt-2 space-y-1.5">
                   <li>✔ Không quên lịch thay nhớt & bảo dưỡng</li>
                   <li>✔ Nắm rõ chi phí vận hành xe</li>
@@ -104,9 +104,9 @@ export default function FeaturesSection() {
           <section className="space-y-6">
             <header className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Bộ tính năng chính</h2>
-              <p className="text-sm text-slate-300/90">
+              <p className="text-sm text-gray-600">
                 Mỗi tính năng được thiết kế xoay quanh câu hỏi:{" "}
-                <span className="text-emerald-300">“Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?”</span>
+                <span className="text-red-500">"Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?"</span>
               </p>
             </header>
 
@@ -116,41 +116,41 @@ export default function FeaturesSection() {
                 return (
                   <article
                     key={feature.id}
-                    className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/7 via-black/60 to-black/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:-translate-y-1.5 hover:border-emerald-400/60"
+                    className="group relative overflow-hidden rounded-3xl border border-red-100 bg-gradient-to-b from-white via-red-50/20 to-white p-6 shadow-[0_24px_80px_rgba(239,68,68,0.08)] transition-transform duration-300 hover:-translate-y-1.5 hover:border-red-300"
                   >
                     {/* Subtle highlight line */}
-                    <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                     <div className="flex items-start gap-4">
-                      <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/40 bg-emerald-400/10">
-                        <div className="absolute inset-0 rounded-2xl bg-emerald-400/20 blur-md" />
-                        <Icon className="relative h-5 w-5 text-emerald-200" />
+                      <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-red-200 bg-red-50/50">
+                        <div className="absolute inset-0 rounded-2xl bg-red-100/30 blur-md" />
+                        <Icon className="relative h-5 w-5 text-red-500" />
                       </div>
 
                       <div className="space-y-2">
                         <div className="inline-flex items-center gap-2">
                           <h3 className="text-base font-semibold sm:text-lg">{feature.label}</h3>
                         </div>
-                        <p className="inline-flex rounded-full bg-white/5 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-emerald-200">
+                        <p className="inline-flex rounded-full bg-red-50/50 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-red-500">
                           {feature.badge}
                         </p>
                       </div>
                     </div>
 
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">{feature.description}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-gray-600">{feature.description}</p>
 
-                    <ul className="mt-4 space-y-2 text-sm text-slate-200">
+                    <ul className="mt-4 space-y-2 text-sm text-gray-600">
                       {feature.points.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <span className="mt-1 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-300" />
+                          <span className="mt-1 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-500" />
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="mt-5 flex items-center justify-between text-xs text-slate-400">
+                    <div className="mt-5 flex items-center justify-between text-xs text-gray-500">
                       <span>Phù hợp cho mọi loại xe số, tay ga, côn tay.</span>
-                      <span className="text-emerald-300/90 group-hover:text-emerald-200">
+                      <span className="text-red-500/90 group-hover:text-red-600">
                         Sắp ra mắt trên iOS & Android
                       </span>
                     </div>
