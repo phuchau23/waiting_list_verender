@@ -15,12 +15,12 @@ export default function DidYouKnowSection() {
   // Pie
   const pieOptions: ApexOptions = {
     labels: ["Quên thay nhớt", "Nhớ thay nhớt"],
-    colors: ["#22c55e", "#0f172a"],
-    theme: { mode: "dark" },
+    colors: ["#dc2626", "#f3f4f6"],
+    theme: { mode: "light" },
     stroke: { width: 0 },
     dataLabels: {
       style: {
-        colors: ["#ffffff"],
+        colors: ["#ffffff", "#1f2937"],
       },
     },
     legend: {
@@ -39,8 +39,8 @@ export default function DidYouKnowSection() {
       toolbar: { show: false },
       background: "transparent",
     },
-    colors: ["#22c55e"],
-    theme: { mode: "dark" },
+    colors: ["#dc2626"],
+    theme: { mode: "light" },
     plotOptions: {
       bar: {
         borderRadius: 6,
@@ -58,7 +58,7 @@ export default function DidYouKnowSection() {
       categories: ["Chuẩn", "+10%", "+15%", "+20%"],
       labels: {
         style: {
-          colors: ["#9ca3af"],
+          colors: ["#6b7280"],
           fontSize: "11px",
         },
       },
@@ -80,15 +80,15 @@ export default function DidYouKnowSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 md:py-24 bg-gradient-to-b from-[#020617] via-[#020617] to-black"
+      className="py-20 md:py-24 bg-gradient-to-b from-gray-50 via-red-50/20 to-gray-50"
     >
-      <div className="mx-auto max-w-6xl px-6 text-center text-white">
+      <div className="mx-auto max-w-6xl px-6 text-center text-gray-800">
         {/* Title */}
         <div className="did-title mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Bạn có biết?</h2>
-          <p className="text-xs md:text-sm text-white/70 max-w-2xl mx-auto">
+          <p className="text-xs md:text-sm text-gray-600 max-w-2xl mx-auto">
             Một vài con số cho thấy vì sao việc quên bảo dưỡng xe lại gây tốn
-            kém đến vậy – và ProCare có thể giúp bạn tránh điều đó.
+            kém đến vậy – và Verendar có thể giúp bạn tránh điều đó.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function DidYouKnowSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
           {/* PIE CHART */}
           <div className="did-item flex flex-col items-center gap-4">
-            <div className="rounded-3xl bg-white/5 border border-emerald-400/20 px-4 py-4 backdrop-blur-md shadow-[0_0_40px_rgba(16,185,129,0.25)]">
+            <div className="rounded-3xl bg-white border border-red-200 px-4 py-4 shadow-[0_0_40px_rgba(220,38,38,0.15)]">
               <ReactApexChart
                 options={pieOptions}
                 series={pieSeries}
@@ -104,8 +104,8 @@ export default function DidYouKnowSection() {
                 width={260}
               />
             </div>
-            <p className="mt-4 text-xs md:text-sm text-white/75 max-w-xs">
-              Khoảng <span className="font-semibold text-emerald-400">77%</span>{" "}
+            <p className="mt-4 text-xs md:text-sm text-gray-600 max-w-xs">
+              Khoảng <span className="font-semibold text-red-500">77%</span>{" "}
               người dùng Việt không nhớ chính xác lịch thay nhớt và bảo dưỡng xe
               máy của mình.
             </p>
@@ -114,23 +114,23 @@ export default function DidYouKnowSection() {
           {/* x2 / x3 bubbles */}
           <div className="did-item flex flex-col items-center gap-6">
             <div className="flex items-center gap-6 md:gap-8">
-              <div className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-emerald-400 text-slate-900 flex items-center justify-center text-3xl md:text-4xl font-bold shadow-[0_0_40px_rgba(16,185,129,0.7)]">
+              <div className="h-20 w-20 md:h-24 md:w-24 rounded-full bg-red-500 text-white flex items-center justify-center text-3xl md:text-4xl font-bold shadow-[0_0_40px_rgba(239,68,68,0.3)]">
                 x2
               </div>
-              <div className="h-24 w-24 md:h-28 md:w-28 rounded-full bg-cyan-400 text-slate-900 flex items-center justify-center text-3xl md:text-4xl font-bold shadow-[0_0_45px_rgba(34,211,238,0.7)]">
+              <div className="h-24 w-24 md:h-28 md:w-28 rounded-full bg-red-400 text-white flex items-center justify-center text-3xl md:text-4xl font-bold shadow-[0_0_45px_rgba(248,113,113,0.3)]">
                 x3
               </div>
             </div>
-            <p className="text-xs md:text-sm text-white/75 max-w-xs">
+            <p className="text-xs md:text-sm text-gray-600 max-w-xs">
               Thay nhớt trễ gấp{" "}
-              <span className="font-semibold text-emerald-400">2–3 lần</span>{" "}
+              <span className="font-semibold text-red-500">2–3 lần</span>{" "}
               làm xe nóng máy, hao xăng rõ rệt và giảm tuổi thọ động cơ.
             </p>
           </div>
 
           {/* BAR CHART */}
           <div className="did-item flex flex-col items-center gap-4">
-            <div className="rounded-3xl bg-white/5 border border-emerald-400/20 px-4 py-4 backdrop-blur-md shadow-[0_0_40px_rgba(16,185,129,0.25)]">
+            <div className="rounded-3xl bg-white border border-red-100 px-4 py-4 shadow-[0_0_40px_rgba(239,68,68,0.1)]">
               <ReactApexChart
                 options={barOptions}
                 series={barSeries}
@@ -139,9 +139,9 @@ export default function DidYouKnowSection() {
                 height={220}
               />
             </div>
-            <p className="mt-4 text-xs md:text-sm text-white/75 max-w-xs">
+            <p className="mt-4 text-xs md:text-sm text-gray-600 max-w-xs">
               Lọc gió bẩn có thể làm xe{" "}
-              <span className="font-semibold text-emerald-400">
+              <span className="font-semibold text-red-500">
                 tốn thêm 10–20% xăng
               </span>{" "}
               so với khi được vệ sinh và thay định kỳ.
