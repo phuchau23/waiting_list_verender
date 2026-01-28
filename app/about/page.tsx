@@ -59,13 +59,13 @@ export default function Home() {
         variants={staggerContainer}
         className="min-h-screen bg-gray-50 text-gray-800 mt-15 -mb-12"
       >
-        {/* Header */}
+        {/* Tiêu đề */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50">
-          {/* Background Image với overlay tối + hiệu ứng blur nhẹ */}
+          {/* Ảnh nền với overlay tối + hiệu ứng blur nhẹ */}
           <div className="absolute inset-0">
             <Image
               src="/office.jpg" // thay bằng ảnh văn phòng thực tế của bạn
-              alt="QuInTech Office"
+              alt="Văn phòng QuInTech"
               fill
               className="object-cover opacity-15"
               priority
@@ -92,7 +92,7 @@ export default function Home() {
                   custom={0.2}
                   className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6"
                 >
-                  Take care of your bike like your wallet.
+                  Chăm xe như chăm ví của bạn.
                   <br />
                 </motion.h2>
 
@@ -101,7 +101,7 @@ export default function Home() {
                   Ứng dụng nhắc bảo dưỡng xe máy dành cho người Việt hiện đại.
                 </motion.p>
 
-                {/* CTA Buttons */}
+                {/* Nút kêu gọi hành động */}
                 <motion.div
                   variants={fadeUp}
                   custom={0.4}
@@ -109,7 +109,7 @@ export default function Home() {
                 >
                   <Link href="/" className="inline-block">
                     <span className="group px-8 py-5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full transition-all duration-300 flex items-center justify-center gap-3 shadow-md shadow-red-500/20 cursor-pointer">
-                      Get Started
+                      Bắt đầu
                       <svg
                         className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                         fill="none"
@@ -129,7 +129,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-96 bg-linear-to-t from-red-400/15 via-transparent to-transparent pointer-events-none" />
         </section>
 
-        {/* OUR MISSION SECTION */}
+        {/* PHẦN SỨ MỆNH */}
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-20">
             <motion.div
@@ -139,10 +139,10 @@ export default function Home() {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="text-center"
             >
-              {/* Tiêu đề "Our Mission" màu đỏ gradient đẹp */}
+              {/* Tiêu đề "Sứ mệnh của chúng tôi" màu đỏ gradient đẹp */}
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
                 <span className="bg-linear-to-r from-red-500 via-red-400 to-red-300 bg-clip-text text-transparent">
-                  Our Mission
+                  Sứ mệnh của chúng tôi
                 </span>
               </h2>
 
@@ -160,10 +160,11 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        {/* COMPREHENSIVE TECHNOLOGY SOLUTIONS SECTION */}
+
+        {/* PHẦN GIẢI PHÁP CÔNG NGHỆ TOÀN DIỆN */}
         <section className="py-16 lg:py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-20">
-            {/* Section Title */}
+            {/* Tiêu đề section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -173,12 +174,12 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
                 <span className="bg-linear-to-r from-red-500 via-red-400 to-red-300 bg-clip-text text-transparent">
-                  Verendar Digital Mechanic
+                  Thợ máy số Verendar
                 </span>
               </h2>
             </motion.div>
 
-            {/* Services Grid */}
+            {/* Lưới dịch vụ */}
             <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {services.map((service, index) => (
                 <motion.div
@@ -198,7 +199,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* FINAL CTA SECTION - RED BOLD */}
+
+        {/* PHẦN CTA CUỐI - ĐỎ NỔI BẬT */}
         <section className="py-24 lg:py-32 bg-linear-to-b from-red-500 via-red-400 to-red-300">
           <div className="max-w-7xl mx-auto px-6 lg:px-20 text-center">
             <motion.div
@@ -227,7 +229,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <button className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-red-500 text-xl font-bold rounded-full shadow-xl hover:shadow-white/20 transition-all duration-300 hover:scale-105">
-                  Contact Us Now
+                  Liên hệ ngay
                   <svg
                     className="w-7 h-7 group-hover:translate-x-2 transition-transform"
                     fill="none"

@@ -11,9 +11,9 @@ export default function Header() {
   const pathname = usePathname();
 
   const menuItems = [
-    { name: "Home", href: "/" },
-    { name: "Product", href: "/product" },
-    { name: "About Us", href: "/about" },
+    { name: "Trang chủ", href: "/" },
+    { name: "Sản phẩm", href: "/product" },
+    { name: "Về chúng tôi", href: "/about" },
     { name: "Blog", href: "/blog" },
   ];
 
@@ -97,13 +97,7 @@ export default function Header() {
         </motion.div>
 
         {/* MENU */}
-        <ul
-          className={
-            isCompact
-              ? "flex items-center gap-2 text-[12px]"
-              : "flex items-center gap-4 text-sm"
-          }
-        >
+        <ul className={isCompact ? "flex items-center gap-2 text-[12px]" : "flex items-center gap-4 text-sm"}>
           {menuItems.map((item) => {
             const active = isActive(item.href);
             return (
@@ -126,9 +120,7 @@ export default function Header() {
                   className={[
                     "relative rounded-full px-4 transition-colors whitespace-nowrap",
                     isCompact ? "py-1.5" : "py-2",
-                    active
-                      ? "text-red-500 font-semibold"
-                      : "text-gray-600 hover:text-red-500",
+                    active ? "text-red-500 font-semibold" : "text-gray-600 hover:text-red-500",
                   ].join(" ")}
                 >
                   {item.name}
