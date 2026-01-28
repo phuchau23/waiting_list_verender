@@ -106,7 +106,7 @@ export default function FeaturesSection() {
               <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">Bộ tính năng chính</h2>
               <p className="text-sm text-gray-600">
                 Mỗi tính năng được thiết kế xoay quanh câu hỏi:{" "}
-                <span className="text-red-500">"Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?"</span>
+                <span className="text-red-500">&quot;Làm sao để bạn chăm xe đơn giản mà vẫn hiệu quả?&quot;</span>
               </p>
             </header>
 

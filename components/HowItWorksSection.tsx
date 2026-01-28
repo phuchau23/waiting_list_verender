@@ -4,7 +4,7 @@
 export default function HowItWorksSection() {
   return (
     <section className="relative border-t border-red-100 bg-gray-50 pt-7">
-      {/* Background image */}
+      {/* Ảnh nền */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{
@@ -15,12 +15,8 @@ export default function HowItWorksSection() {
 
       <div className="relative container mx-auto max-w-5xl px-4 lg:px-0 py-16 lg:py-24">
         <div className="text-center mb-12 how-title">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
-            Process
-          </p>
-          <h2 className="mt-3 text-2xl md:text-3xl font-semibold text-gray-800">
-            How it works
-          </h2>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500">Quy trình</p>
+          <h2 className="mt-3 text-2xl md:text-3xl font-semibold text-gray-800">Cách hoạt động</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
@@ -50,8 +46,7 @@ export default function HowItWorksSection() {
             </div>
             <h3 className="font-semibold text-gray-800">Thành công</h3>
             <p className="text-xs md:text-sm text-gray-600 max-w-[260px] mx-auto leading-relaxed">
-              Ứng dụng tự động nhắc thay nhớt, kiểm tra định kỳ và lưu lại chi
-              phí sử dụng xe cho bạn.
+              Ứng dụng tự động nhắc thay nhớt, kiểm tra định kỳ và lưu lại chi phí sử dụng xe cho bạn.
             </p>
           </div>
         </div>

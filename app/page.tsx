@@ -12,6 +12,7 @@ import PricingSection from "@/components/PricingSection";
 import FeaturesSection from "./feature/page";
 import Header from "@/components/common/header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,13 +22,13 @@ export default function Home() {
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
-      const headerHeight = 100; // Chiều cao header + padding
+      const headerHeight = 100;
       const elementPosition = contactSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -35,8 +36,8 @@ export default function Home() {
   // 1️⃣ Smooth scroll bằng Lenis
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08, // độ mượt
-      wheelMultiplier: 1, // độ nhạy cuộn chuột
+      lerp: 0.08,
+      wheelMultiplier: 1,
     });
 
     function raf(time: number) {
@@ -54,7 +55,7 @@ export default function Home() {
     };
   }, []);
 
-  // 2️⃣ Hero entrance khi mới load
+  // 2️⃣ Hiệu ứng vào màn khi vừa load
   useEffect(() => {
     if (!pageRef.current) return;
 
@@ -76,7 +77,7 @@ export default function Home() {
             ease: "power4.out",
             stagger: 0.08,
           },
-          "-=0.2"
+          "-=0.2",
         )
         .from(
           ".hero-sub",
@@ -86,7 +87,7 @@ export default function Home() {
             duration: 0.6,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .from(
           ".hero-form",
@@ -96,7 +97,7 @@ export default function Home() {
             duration: 0.55,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .from(
           ".hero-partners",
@@ -106,7 +107,7 @@ export default function Home() {
             duration: 0.5,
             ease: "power2.out",
           },
-          "-=0.25"
+          "-=0.25",
         )
         .from(
           ".hero-3d",
@@ -116,78 +117,19 @@ export default function Home() {
             duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.4"
+          "-=0.4",
         );
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
-  // 3️⃣ GSAP ScrollTrigger cho toàn trang
+  // 3️⃣ GSAP ScrollTrigger (đã bỏ HERO pin + scale để không còn ảnh to đùng)
   useEffect(() => {
     if (!pageRef.current) return;
 
     const ctx = gsap.context(() => {
-      // ================= HERO =================
-      const heroTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top top",
-          end: "+=220%", // kéo dài thêm để có đoạn “ngắm xe”
-          scrub: true,
-          pin: true,
-        },
-      });
-
-      // Phase 1: text biến mất + xe phóng to
-      heroTl
-        .to(
-          ".hero-content",
-          {
-            y: -300,
-            opacity: 0,
-            ease: "none",
-            duration: 1,
-          },
-          0
-        )
-        .to(
-          ".hero-3d-float",
-          {
-            y: -40,
-            scale: 1.35,
-            xPercent: -38,
-            transformOrigin: "center center",
-            ease: "power2.inOut",
-            duration: 1,
-          },
-          0
-        )
-        .to(
-          ".hero-bg-glow",
-          {
-            opacity: 0.9,
-            scale: 1.1,
-            ease: "power2.inOut",
-            duration: 1,
-          },
-          0
-        )
-        .to(
-          ".hero-scroll-indicator",
-          {
-            opacity: 0,
-            y: 20,
-            ease: "none",
-            duration: 1,
-          },
-          0
-        );
-
-      // Phase 2: giữ nguyên trạng thái 1 đoạn (ngắm xe)
-      heroTl.to({}, { duration: 1 });
-
-      // Hero 3D – float nhẹ liên tục
+      // ✅ Hero 3D – float nhẹ liên tục (KHÔNG scale theo scroll)
       gsap.to(".hero-3d-float", {
         y: "-=12",
         duration: 3,
@@ -196,7 +138,7 @@ export default function Home() {
         ease: "sine.inOut",
       });
 
-      // SCROLL PROGRESS BAR BÊN PHẢI
+      // THANH TIẾN TRÌNH CUỘN Ở BÊN PHẢI
       gsap.to(".scroll-progress", {
         scaleY: 1,
         ease: "none",
@@ -208,7 +150,7 @@ export default function Home() {
         },
       });
 
-      // ================= HOW IT WORKS =================
+      // ================= CÁCH HOẠT ĐỘNG =================
       const howTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-how",
@@ -234,7 +176,7 @@ export default function Home() {
             duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .from(
           ".section-how .how-item",
@@ -251,10 +193,10 @@ export default function Home() {
               from: "center",
             },
           },
-          "-=0.25"
+          "-=0.25",
         );
 
-      // ================= DID YOU KNOW =================
+      // ================= BẠN CÓ BIẾT =================
       const dykTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-didyou",
@@ -284,7 +226,7 @@ export default function Home() {
             ease: "power3.out",
             stagger: 0.12,
           },
-          "-=0.3"
+          "-=0.3",
         )
         .to(
           ".section-didyou",
@@ -293,10 +235,10 @@ export default function Home() {
             duration: 0.6,
             ease: "power2.out",
           },
-          "-=0.5"
+          "-=0.5",
         );
 
-      // ================= FEATURES SECTION =================
+      // ================= PHẦN TÍNH NĂNG =================
       const featureTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-feature",
@@ -322,7 +264,7 @@ export default function Home() {
             duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .from(
           ".section-feature .feature-card",
@@ -336,7 +278,7 @@ export default function Home() {
             ease: "power3.out",
             stagger: 0.16,
           },
-          "-=0.2"
+          "-=0.2",
         );
 
       // Parallax nhẹ cho background feature (nếu có)
@@ -351,7 +293,7 @@ export default function Home() {
         },
       });
 
-      // ================= PRICING =================
+      // ================= BẢNG GIÁ =================
       const pricingTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-pricing",
@@ -377,7 +319,7 @@ export default function Home() {
             duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.25"
+          "-=0.25",
         )
         .from(
           ".section-pricing .pricing-card",
@@ -391,9 +333,8 @@ export default function Home() {
             ease: "power3.out",
             stagger: 0.16,
           },
-          "-=0.2"
+          "-=0.2",
         )
-        // card ở giữa (nếu có class .pricing-card--primary) pop mạnh hơn
         .to(
           ".section-pricing .pricing-card--primary",
           {
@@ -402,10 +343,10 @@ export default function Home() {
             duration: 0.6,
             ease: "power2.out",
           },
-          "-=0.4"
+          "-=0.4",
         );
 
-      // ================= CONTACT =================
+      // ================= LIÊN HỆ =================
       const contactTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-contact",
@@ -431,7 +372,7 @@ export default function Home() {
             duration: 0.9,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .from(
           ".section-contact .contact-form",
@@ -441,7 +382,7 @@ export default function Home() {
             duration: 0.9,
             ease: "power3.out",
           },
-          "-=0.7"
+          "-=0.7",
         )
         .from(
           ".section-contact .contact-chip, .section-contact .contact-tag",
@@ -452,10 +393,10 @@ export default function Home() {
             ease: "power3.out",
             stagger: 0.12,
           },
-          "-=0.6"
+          "-=0.6",
         );
 
-      // ================= FOOTER =================
+      // ================= CHÂN TRANG =================
       const footerTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-footer",
@@ -480,7 +421,7 @@ export default function Home() {
             ease: "power3.out",
             stagger: 0.12,
           },
-          "-=0.4"
+          "-=0.4",
         )
         .from(
           ".section-footer .footer-link, .section-footer .footer-badge",
@@ -491,7 +432,7 @@ export default function Home() {
             ease: "power2.out",
             stagger: 0.06,
           },
-          "-=0.4"
+          "-=0.4",
         );
     }, pageRef);
 
@@ -502,25 +443,25 @@ export default function Home() {
     <>
       <Header />
       <div ref={pageRef} className="min-h-screen bg-gray-50 text-gray-800">
-        {/* SCROLL PROGRESS BAR BÊN PHẢI */}
+        {/* THANH TIẾN TRÌNH CUỘN Ở BÊN PHẢI */}
         <div className="fixed right-6 top-1/2 z-50 h-40 w-px -translate-y-1/2 overflow-hidden bg-red-100 pointer-events-none">
           <div className="scroll-progress h-full w-full origin-bottom scale-y-0 bg-gradient-to-t from-red-500 via-red-400 to-red-300" />
         </div>
 
-        {/* HERO FULL SCREEN */}
+        {/* HERO TOÀN MÀN HÌNH */}
         <main className="hero-section relative flex h-screen items-center overflow-hidden">
           <div className="relative mx-auto w-full max-w-6xl px-6 py-10">
-            {/* LEFT: HERO TEXT */}
+            {/* TRÁI: NỘI DUNG HERO */}
             <section className="hero-content relative z-10 max-w-xl space-y-6 text-gray-800">
-              {/* Badge */}
+              {/* Huy hiệu */}
               <div className="hero-badge inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50/50 px-4 py-2 text-xs tracking-wide">
                 <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
                 <span className="font-medium uppercase text-[11px] tracking-[0.18em] text-gray-600">
-                  #1 Motorbike Care App
+                  #1 Ứng dụng chăm sóc xe máy
                 </span>
               </div>
 
-              {/* Heading */}
+              {/* Tiêu đề */}
               <h1 className="text-4xl md:text-5xl font-bold leading-tight space-y-1">
                 <span className="hero-heading-line block">Quản lý xe</span>
                 <span className="hero-heading-line block">dễ dàng với</span>
@@ -529,32 +470,25 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Subtext */}
+              {/* Mô tả */}
               <p className="hero-sub text-sm md:text-base text-gray-600 max-w-md">
-                Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa
-                xe một cách dễ dàng – tất cả ngay trên điện thoại của bạn.
+                Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe một cách dễ dàng – tất cả ngay trên
+                điện thoại của bạn.
               </p>
 
-              {/* Email form */}
+              {/* Nút kêu gọi hành động */}
               <div className="hero-form flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                {/* <input
-                  type="email"
-                  placeholder="Nhập email của bạn"
-                  className="flex-1 rounded-full border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-transparent"
-                /> */}
-                <button 
+                <button
                   onClick={scrollToContact}
                   className="rounded-full items-end px-6 py-3 text-sm font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors shadow-md shadow-red-500/20 cursor-pointer"
                 >
-                  Get Started
+                  Trải Nghiệm Ngay
                 </button>
               </div>
 
-              {/* Global partner */}
+              {/* Đối tác toàn cầu */}
               <div className="hero-partners pt-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">
-                  Global Partner
-                </p>
+                <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">Đối tác toàn cầu</p>
                 <div className="flex gap-3">
                   {["A", "B", "C", "D"].map((item) => (
                     <div
@@ -568,31 +502,23 @@ export default function Home() {
               </div>
             </section>
 
-            {/* RIGHT: 3D MODEL */}
-            <section className="hero-3d absolute inset-y-0 right-[-160px] hidden md:flex items-center">
-              {/* Glow nền (không chặn chuột) */}
-              <div className="hero-bg-glow absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(239,68,68,0.15),_transparent_60%)] blur-3xl" />
+            {/* PHẢI: ẢNH HERO (từ /public) */}
+            <section className="hero-3d absolute inset-y-0 -right-40 hidden md:flex items-center">
+              {/* Glow nền */}
+              <div className="hero-bg-glow absolute inset-0 z-1 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.15),transparent_60%)] blur-3xl" />
 
-              {/* Kawasaki Z900 3D Model */}
               <div className="hero-3d-float relative z-5 flex items-center justify-center py-8">
-                <iframe
-                  title="Kawasaki Z900 3Dscan (retopology model)"
-                  width="760"
-                  height="460"
-                  src="https://sketchfab.com/models/ffde1136537448178fbd82d4066b4704/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_theme=dark"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; xr-spatial-tracking"
-                  allowFullScreen
-                  className="rounded-xl"
-                ></iframe>
+                <div className="relative h-[460px] w-[760px]">
+                  <Image
+                    src="/hero-bike.png"
+                    alt="Ảnh hero Verendar"
+                    fill
+                    priority
+                    className="rounded-xl object-contain"
+                  />
+                </div>
               </div>
             </section>
-
-            {/* Scroll Indicator */}
-            <div className="hero-scroll-indicator absolute left-6 bottom-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-gray-500">
-              <span className="h-px w-6 bg-red-200" />
-              Scroll để khám phá
-            </div>
           </div>
         </main>
 
