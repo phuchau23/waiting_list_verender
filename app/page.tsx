@@ -47,7 +47,6 @@ export default function Home() {
 
     requestAnimationFrame(raf);
 
-    // Sync Lenis với ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
     return () => {
@@ -55,81 +54,156 @@ export default function Home() {
     };
   }, []);
 
-  // 2️⃣ Hiệu ứng vào màn khi vừa load
+  // 2️⃣ Intro animation (desktop) + Mobile: reveal ảnh khi scroll xuống
   useEffect(() => {
     if (!pageRef.current) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.15 });
+      const mm = gsap.matchMedia();
 
-      tl.from(".hero-badge", {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        ease: "power3.out",
-      })
-        .from(
-          ".hero-heading-line",
-          {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power4.out",
-            stagger: 0.08,
+      // ===== Desktop (>= md): giữ nguyên flow cũ, ảnh hiện khi load =====
+      mm.add("(min-width: 768px)", () => {
+        const tl = gsap.timeline({ delay: 0.15 });
+
+        tl.from(".hero-badge", {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power3.out",
+        })
+          .from(
+            ".hero-heading-line",
+            {
+              y: 40,
+              opacity: 0,
+              duration: 0.8,
+              ease: "power4.out",
+              stagger: 0.08,
+            },
+            "-=0.2",
+          )
+          .from(
+            ".hero-sub",
+            {
+              y: 24,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            },
+            "-=0.3",
+          )
+          .from(
+            ".hero-form",
+            {
+              y: 24,
+              opacity: 0,
+              duration: 0.55,
+              ease: "power3.out",
+            },
+            "-=0.3",
+          )
+          .from(
+            ".hero-partners",
+            {
+              y: 20,
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            "-=0.25",
+          )
+          .from(
+            ".hero-3d",
+            {
+              x: 80,
+              opacity: 0,
+              duration: 0.7,
+              ease: "power3.out",
+            },
+            "-=0.4",
+          );
+      });
+
+      // ===== Mobile (< md): chữ load như cũ, ảnh chỉ hiện khi kéo xuống =====
+      mm.add("(max-width: 767px)", () => {
+        const tl = gsap.timeline({ delay: 0.15 });
+
+        tl.from(".hero-badge", {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power3.out",
+        })
+          .from(
+            ".hero-heading-line",
+            {
+              y: 40,
+              opacity: 0,
+              duration: 0.8,
+              ease: "power4.out",
+              stagger: 0.08,
+            },
+            "-=0.2",
+          )
+          .from(
+            ".hero-sub",
+            {
+              y: 24,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            },
+            "-=0.3",
+          )
+          .from(
+            ".hero-form",
+            {
+              y: 24,
+              opacity: 0,
+              duration: 0.55,
+              ease: "power3.out",
+            },
+            "-=0.3",
+          )
+          .from(
+            ".hero-partners",
+            {
+              y: 20,
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            "-=0.25",
+          );
+
+        gsap.set(".hero-3d-mobile", { opacity: 0, y: 40 });
+
+        gsap.to(".hero-3d-mobile", {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".hero-3d-mobile",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
           },
-          "-=0.2",
-        )
-        .from(
-          ".hero-sub",
-          {
-            y: 24,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          "-=0.3",
-        )
-        .from(
-          ".hero-form",
-          {
-            y: 24,
-            opacity: 0,
-            duration: 0.55,
-            ease: "power3.out",
-          },
-          "-=0.3",
-        )
-        .from(
-          ".hero-partners",
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          "-=0.25",
-        )
-        .from(
-          ".hero-3d",
-          {
-            x: 80,
-            opacity: 0,
-            duration: 0.7,
-            ease: "power3.out",
-          },
-          "-=0.4",
-        );
+        });
+      });
+
+      ScrollTrigger.refresh();
+
+      return () => mm.revert();
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
-  // 3️⃣ GSAP ScrollTrigger (đã bỏ HERO pin + scale để không còn ảnh to đùng)
+  // 3️⃣ GSAP ScrollTrigger (giữ nguyên của bạn)
   useEffect(() => {
     if (!pageRef.current) return;
 
     const ctx = gsap.context(() => {
-      // ✅ Hero 3D – float nhẹ liên tục (KHÔNG scale theo scroll)
       gsap.to(".hero-3d-float", {
         y: "-=12",
         duration: 3,
@@ -138,7 +212,6 @@ export default function Home() {
         ease: "sine.inOut",
       });
 
-      // THANH TIẾN TRÌNH CUỘN Ở BÊN PHẢI
       gsap.to(".scroll-progress", {
         scaleY: 1,
         ease: "none",
@@ -150,7 +223,6 @@ export default function Home() {
         },
       });
 
-      // ================= CÁCH HOẠT ĐỘNG =================
       const howTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-how",
@@ -188,15 +260,11 @@ export default function Home() {
             filter: "blur(6px)",
             duration: 0.9,
             ease: "power3.out",
-            stagger: {
-              each: 0.14,
-              from: "center",
-            },
+            stagger: { each: 0.14, from: "center" },
           },
           "-=0.25",
         );
 
-      // ================= BẠN CÓ BIẾT =================
       const dykTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-didyou",
@@ -238,7 +306,6 @@ export default function Home() {
           "-=0.5",
         );
 
-      // ================= PHẦN TÍNH NĂNG =================
       const featureTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-feature",
@@ -281,7 +348,6 @@ export default function Home() {
           "-=0.2",
         );
 
-      // Parallax nhẹ cho background feature (nếu có)
       gsap.to(".section-feature", {
         backgroundPositionY: "20%",
         ease: "none",
@@ -293,7 +359,6 @@ export default function Home() {
         },
       });
 
-      // ================= BẢNG GIÁ =================
       const pricingTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-pricing",
@@ -346,7 +411,6 @@ export default function Home() {
           "-=0.4",
         );
 
-      // ================= LIÊN HỆ =================
       const contactTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-contact",
@@ -396,7 +460,6 @@ export default function Home() {
           "-=0.6",
         );
 
-      // ================= CHÂN TRANG =================
       const footerTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section-footer",
@@ -434,6 +497,8 @@ export default function Home() {
           },
           "-=0.4",
         );
+
+      ScrollTrigger.refresh();
     }, pageRef);
 
     return () => ctx.revert();
@@ -443,17 +508,15 @@ export default function Home() {
     <>
       <Header />
       <div ref={pageRef} className="min-h-screen bg-gray-50 text-gray-800">
-        {/* THANH TIẾN TRÌNH CUỘN Ở BÊN PHẢI */}
         <div className="fixed right-6 top-1/2 z-50 h-40 w-px -translate-y-1/2 overflow-hidden bg-red-100 pointer-events-none">
           <div className="scroll-progress h-full w-full origin-bottom scale-y-0 bg-gradient-to-t from-red-500 via-red-400 to-red-300" />
         </div>
 
-        {/* HERO TOÀN MÀN HÌNH */}
-        <main className="hero-section relative flex h-screen items-center overflow-hidden">
+        {/* HERO */}
+        <main className="hero-section relative flex min-h-screen md:h-screen items-start md:items-center overflow-hidden">
           <div className="relative mx-auto w-full max-w-6xl px-6 py-10">
-            {/* TRÁI: NỘI DUNG HERO */}
+            {/* TRÁI: NỘI DUNG HERO (GIỮ NGUYÊN) */}
             <section className="hero-content relative z-10 max-w-xl space-y-6 text-gray-800">
-              {/* Huy hiệu */}
               <div className="hero-badge inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50/50 px-4 py-2 text-xs tracking-wide">
                 <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
                 <span className="font-medium uppercase text-[11px] tracking-[0.18em] text-gray-600">
@@ -461,7 +524,6 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Tiêu đề */}
               <h1 className="text-4xl md:text-5xl font-bold leading-tight space-y-1">
                 <span className="hero-heading-line block">Quản lý xe</span>
                 <span className="hero-heading-line block">dễ dàng với</span>
@@ -470,23 +532,20 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Mô tả */}
               <p className="hero-sub text-sm md:text-base text-gray-600 max-w-md">
                 Theo dõi bảo dưỡng, nhắc thay nhớt, chi phí và lịch sử sửa chữa xe một cách dễ dàng – tất cả ngay trên
                 điện thoại của bạn.
               </p>
 
-              {/* Nút kêu gọi hành động */}
               <div className="hero-form flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={scrollToContact}
-                  className="rounded-full items-end px-6 py-3 text-sm font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors shadow-md shadow-red-500/20 cursor-pointer"
+                  className="rounded-full items-end px-6 py-4 text-sm font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors shadow-md shadow-red-500/20 cursor-pointer"
                 >
                   Trải Nghiệm Ngay
                 </button>
               </div>
 
-              {/* Đối tác toàn cầu */}
               <div className="hero-partners pt-6">
                 <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">Đối tác toàn cầu</p>
                 <div className="flex gap-3">
@@ -502,15 +561,31 @@ export default function Home() {
               </div>
             </section>
 
-            {/* PHẢI: ẢNH HERO (từ /public) */}
+            {/* MOBILE: ẢNH NẰM DƯỚI + CHỈ HIỆN KHI SCROLL */}
+            <section className="hero-3d-mobile relative mt-10 md:hidden">
+              <div className="hero-bg-glow absolute inset-0 z-1 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.15),transparent_60%)] blur-3xl" />
+
+              <div className="hero-3d-float relative z-5 flex items-center justify-center py-4">
+                <div className="relative h-[280px] w-full max-w-[520px]">
+                  <Image
+                    src="/herobike.png"
+                    alt="Ảnh hero Verendar"
+                    fill
+                    priority
+                    className="rounded-xl object-contain"
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* DESKTOP: GIỮ NGUYÊN như bạn đang có */}
             <section className="hero-3d absolute inset-y-0 -right-40 hidden md:flex items-center">
-              {/* Glow nền */}
               <div className="hero-bg-glow absolute inset-0 z-1 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.15),transparent_60%)] blur-3xl" />
 
               <div className="hero-3d-float relative z-5 flex items-center justify-center py-8">
                 <div className="relative h-[460px] w-[760px]">
                   <Image
-                    src="/hero-bike.png"
+                    src="/herobike.png"
                     alt="Ảnh hero Verendar"
                     fill
                     priority
@@ -522,7 +597,6 @@ export default function Home() {
           </div>
         </main>
 
-        {/* CÁC SECTION PHÍA DƯỚI */}
         <section className="section-how">
           <HowItWorksSection />
         </section>
